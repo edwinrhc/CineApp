@@ -3,17 +3,21 @@ package net.itinajero.app.controller;
 import net.itinajero.app.model.Pelicula;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 @Controller
 public class HomeController {
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String goHome() {
@@ -27,14 +31,24 @@ public class HomeController {
      //   peliculas.add("Rapido y Furiosos");
      //   peliculas.add("El aro 2");
      //   peliculas.add("Aliens");
+        model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
         model.addAttribute("peliculas", peliculas);
 
         return "home";
     }
 
 
-    @RequestMapping(value = "/detail")
-    public String mostrarDetalle(Model model) {
+    @RequestMapping(value = "/detail/{id}/{fecha}", method = RequestMethod.GET)
+    public String mostrarDetalle(Model model,
+                                 @PathVariable("id") int idPelicula,
+                                 @PathVariable("fecha") String fecha) {
+
+
+        System.out.println("Buscando horarios para la pelicula: " + idPelicula);
+        System.out.println("Para la fecha " + fecha);
+
+        // TODO: - Busqueda en la base de datos
+
         String tituloPelicula = "Rapidos y Furiosos";
         int duracion = 136;
         double precioEntrada = 50;
@@ -65,7 +79,7 @@ public class HomeController {
             pelicula1.setDuracion(120);
             pelicula1.setClasificacion("B");
             pelicula1.setGenero("Aventura");
-            pelicula1.setFechaEstreno(formatter.parse("12-05-2022"));
+            pelicula1.setFechaEstreno(formatter.parse("18-01-2023"));
 
             Pelicula pelicula2= new Pelicula();
             pelicula2.setId(2);
@@ -73,7 +87,7 @@ public class HomeController {
             pelicula2.setDuracion(132);
             pelicula2.setClasificacion("A");
             pelicula2.setGenero("Infantil");
-            pelicula2.setFechaEstreno(formatter.parse("12-02-2022"));
+            pelicula2.setFechaEstreno(formatter.parse("17-01-2023"));
             pelicula2.setImagen("estreno6.png");
 
             Pelicula pelicula3= new Pelicula();
@@ -82,7 +96,7 @@ public class HomeController {
             pelicula3.setDuracion(106);
             pelicula3.setClasificacion("B");
             pelicula3.setGenero("Thriller");
-            pelicula3.setFechaEstreno(formatter.parse("10-03-2022"));
+            pelicula3.setFechaEstreno(formatter.parse("16-01-2023"));
             pelicula3.setImagen("estreno7.png");
 
             Pelicula pelicula4= new Pelicula();
@@ -91,7 +105,7 @@ public class HomeController {
             pelicula4.setDuracion(118);
             pelicula4.setClasificacion("B");
             pelicula4.setGenero("Accion y Aventura");
-            pelicula4.setFechaEstreno(formatter.parse("06-06-2017"));
+            pelicula4.setFechaEstreno(formatter.parse("16-01-2023"));
             pelicula4.setImagen("estreno4.png");
             pelicula4.setEstatus("Inactiva");
 
