@@ -26,22 +26,10 @@ public class NoticiasController {
     }
 
     @PostMapping("/save")
-    public String guardar(@RequestParam("titulo") String titulo,
-                          @RequestParam("estatus") String estatus,
-                          @RequestParam("detalle") String detalle)
+    public String guardar(Noticia noticia)
     {
-
-
-        Noticia noticia = new Noticia();
-        noticia.setTitulo(titulo);
-        noticia.setEsttus(estatus);
-        noticia.setDetalle(detalle);
-
         // Pendiente: Guardar el objeto noticia  en la BD
         serviceNoticia.guardar(noticia);
-
-
-
         return "noticias/formNoticia";
     }
 
