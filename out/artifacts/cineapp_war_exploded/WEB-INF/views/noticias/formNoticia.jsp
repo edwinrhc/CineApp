@@ -1,4 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +13,7 @@
     <meta name="author" content="">
     <title>Creacion de Noticias</title>
     <spring:url value="/resources" var="urlPublic"></spring:url>
+    <spring:url value="/peliculas/save" var="urlForm"></spring:url>
     <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
 
@@ -23,7 +27,8 @@
 
     <h3 class="blog-title"><span class="label label-success">Datos de la Noticia</span></h3>
 
-    <spring:url value="/noticias/save" var="urlForm"></spring:url>
+
+
     <form action="${urlForm}" method="post">
         <div class="row">
             <div class="col-sm-6">

@@ -1,5 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -112,7 +114,7 @@
 			<div class="col-sm-12 blog-main">
 
 				<div class="blog-post">
-					<h3 class="blog-post-title">Julia Roberts protagonizar· The Bookseller</h3>
+					<h3 class="blog-post-title">Julia Roberts protagonizar√° The Bookseller</h3>
 
 					<p class="blog-post-meta"><span class="label label-danger">Publicado: 16-06-2017</span></p>
 					<p>La novela de Cynthia Swanson <span style="color: #0000ff;"><strong>The Bookseller</strong></span> ser&aacute; llevada al cine con <span style="color: #0000ff;">Julia Roberts (Los Pitufos: La aldea Escondida)</span> como protagonista.<br /><br />La historia est&aacute; ambientada en los sesenta y su protagonista es una mujer soltera, Kitty Miller, que lleva una librer&iacute;a. Sue&ntilde;a con una vida alternativa en la que ha encontrado el amor y est&aacute; casada y con hijos, pero la l&iacute;nea que separa realidad y ficci&oacute;n comienza a estar demasiado dispersa para que la distinga.<br /><br />Seg&uacute;n informa <span style="color: #ff0000;"><strong>Moviehole</strong></span> Roberts tambi&eacute;n producir&aacute; la pel&iacute;cula junto a Lisa Gillan y Marisa Yeres Hill.</p>
@@ -121,7 +123,7 @@
 				</div>
 
 				<div class="blog-post">
-					<h3 class="blog-post-title">Bob Esponja: tercera pelÌcula y temporada 12</h3>
+					<h3 class="blog-post-title">Bob Esponja: tercera pel√≠cula y temporada 12</h3>
 					<p class="blog-post-meta"><span class="label label-danger">Publicado: 15-06-2017</span></p>
 
 					<p><strong><span style="color: #ff0000;">Nickelodeon y productor de SpongeBob Square Pants confirman temporada 12 de 52 episodios y tercera pel&iacute;cula pr&oacute;ximamente. </span></strong></p>
