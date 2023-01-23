@@ -1,7 +1,9 @@
 <!-- Fixed navbar -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+<spring:url value="/" var="urlRoot" />
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <spring:url value="/" var="urlRoot" />
+
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -14,6 +16,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+        <li><a href="${urlRoot}peliculas/index">Peliculas</a></li>
         <li><a href="#">Acerca</a></li>
         <li><a href="#">Login</a></li>
       </ul>

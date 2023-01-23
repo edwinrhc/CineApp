@@ -83,6 +83,7 @@ public class PeliculaServiceImpl implements  IPeliculasService{
 
     }
 
+
     public List<Pelicula> buscarTodas() {
         return lista;
     }
@@ -96,4 +97,9 @@ public class PeliculaServiceImpl implements  IPeliculasService{
         }
         return null;
     }
+
+    public void insertar(Pelicula pelicula) {
+        lista.add(pelicula);
+    }
+
 }
