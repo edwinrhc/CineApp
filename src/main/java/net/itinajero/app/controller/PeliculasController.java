@@ -10,11 +10,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+
+
 
 @Controller
 @RequestMapping("/peliculas")
@@ -39,12 +46,19 @@ public class PeliculasController {
 
 
     @PostMapping("/save")
-    public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes){
+    public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
+                          @RequestParam("archivoImagen") MultipartFile multiPart, HttpServletRequest request){
 
         // Si existe errores
         if(result.hasErrors()){
             System.out.println("Existieron errores " + pelicula);
             return "peliculas/formPelicula";
+        }
+
+        if(!multiPart.isEmpty()){
+           String nombreImagen = guardarImagen(multiPart, request);
+           pelicula.setImagen(nombreImagen);
+            System.out.println("Nombre de la imagen subida" + nombreImagen);
         }
 
 
@@ -57,9 +71,23 @@ public class PeliculasController {
 
     }
 
-
-
-
+    private String guardarImagen(MultipartFile multiPart, HttpServletRequest request){
+        // Obtenemos el nombre original del archivo
+        String nombreOriginal = multiPart.getOriginalFilename();
+        // Obtenemos la ruta ABSOLUTA  del directorio images
+        // apache-tomcat/webapss/cineapp/resources/images/
+        String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
+        try {
+            //Formamos el nombre del archivo para guardarlo en el disco duro
+            File imageFile = new File(rutaFinal + nombreOriginal);
+            // Aquí se guarda físicamente el archivo en el disco duro
+            multiPart.transferTo(imageFile);
+            return nombreOriginal;
+        }catch ( IOException e){
+            System.out.println("Error "+ e.getMessage());
+            return null;
+        }
+    }
 
 
     //Formato de fecha personalizando el DataBinding tipo  Date
